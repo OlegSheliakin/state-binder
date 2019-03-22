@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">StateHolder</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="type_text">Type text</string>
+    <string name="set_text">set text</string>
+    <string name="go_to_detail">Go to Detail</string>
+    <string name="set_error_state">Set error state</string>
+</resources>
