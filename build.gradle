@@ -1,5 +1,30 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+ext {
+    bintrayRepo = 'state-binder'
+    bintrayName = 'state-binder'
+
+    artifact = 'state-binder'
+    publishedGroupId = 'com.olegsheliakin'
+    libraryName = 'state-binder'
+    libraryVersion = '1.0.0'
+    libraryDescription = 'State binder for MVI architecture pattern'
+
+    siteUrl = 'https://github.com/OlegSheliakin/state-binder'
+    issuesUrl = 'https://github.com/OlegSheliakin/state-binder/issues'
+    gitUrl = 'https://github.com/OlegSheliakin/state-binder.git'
+
+    developerId = 'olegsheliakin'
+    developerName = 'Oleg Sheliakin'
+    developerEmail = 'olegsheliakin@gmail.com'
+
+    licenseName = 'MIT License'
+    licenseUrl = 'https://opensource.org/licenses/mit-license.php'
+    allLicenses = ["MIT"]
+
+    tags = ["State", "MVI", "VM", "ViewModel", "MVP", "Bind"]
+}
+
 buildscript {
     ext.kotlin_version = '1.3.21'
     repositories {
@@ -9,7 +34,8 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
