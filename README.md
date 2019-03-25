@@ -28,8 +28,7 @@ data class MainState(
 class MainFragment : Fragment() {
 
     private val stateBinder: StateBinder<MainState> = StateBinder.create()
-    
-    ...
+   
 }
 ~~~
 
@@ -37,16 +36,19 @@ class MainFragment : Fragment() {
 
 ~~~ kotlin
  stateBinder.apply {
+ 
             bind(MainState::label) {
                 tvLabel.text = it
             }
+            
             bindNullable(MainState::errorText) {
                 etText.error = it
             }
+            
         }
 ~~~
 
-Actions will be called only when the state changes.
+  Actions will be called only when the state changes.
 
 4. Update state by calling:
 
