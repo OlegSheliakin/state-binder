@@ -17,7 +17,7 @@ class MainFragment : Fragment() {
         return@lazy ViewModelProviders.of(this@MainFragment)[MainViewModel::class.java]
     }
 
-    private val stateHolder: StateBinder<MainState> = StateBinder.create()
+    private val stateBinder: StateBinder<MainState> = StateBinder.create()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,10 +31,10 @@ class MainFragment : Fragment() {
         initUi()
 
         viewModel.state.observe(viewLifecycleOwner, Observer {
-            it?.let(stateHolder::newState)
+            it?.let(stateBinder::newState)
         })
 
-        stateHolder.apply {
+        stateBinder.apply {
             applyCurrentState()
             bind(MainState::label) {
                 tvLabel.text = it
