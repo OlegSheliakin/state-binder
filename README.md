@@ -46,6 +46,32 @@ stateBinder.apply {
 
   Actions will be called only when the state changes.
 
+4. Create ViewModel/Presenter or any other class that is reponsible for changing and emitting State:
+
+   ~~~kotlin
+   class MainViewModel : ViewModel() {
+   
+       private val internalState = MutableLiveData<MainState>()
+   
+       val state: LiveData<MainState> = internalState
+   
+       init {
+           internalState.value = MainState("", null)
+       }
+   
+       fun loadText() {
+           internalState.value = MainState("Text", null)
+       }
+   
+       fun initError() {
+           internalState.value = MainState("", "Error")
+       }
+   
+   }
+   ~~~
+
+   
+
 4. Update state by calling:
 
 ~~~ kotlin
