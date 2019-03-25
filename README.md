@@ -72,11 +72,13 @@ stateBinder.apply {
 
    
 
-4. Update state by calling:
+5. Update state by calling:
 
 ~~~ kotlin
 stateBinder.newState(newState)
 ~~~
+
+
 
 ## Full code:
 
