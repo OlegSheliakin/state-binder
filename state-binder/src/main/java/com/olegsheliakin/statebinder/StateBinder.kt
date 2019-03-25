@@ -62,10 +62,10 @@ class StateBinder<T : State> private constructor() {
 
     private fun applyState() {
         nonNullBinderActions.forEach {
-            diff(it.valueSelector, it.action::invoke)
+            diff(it.valueSelector, it.action)
         }
         nullableBinderActions.forEach {
-            diffNullable(it.valueSelector, it.action::invoke)
+            diffNullable(it.valueSelector, it.action)
         }
     }
 
