@@ -7,7 +7,7 @@ StateBinder is a tiny library for view state management. It eliminates redundant
 # Download
 ~~~ groovy
 dependencies {
-  impelentation 'com.olegsheliakin:statebinder:1.0.0'
+  impelentation 'com.olegsheliakin:statebinder:latest'
 }
 ~~~
 
