@@ -1,9 +1,17 @@
 # StateBinder
 
-State binder for MVI architecture pattern.
-
 [ ![Download](https://api.bintray.com/packages/olegsheliakin/maven/statebinder/images/download.svg) ](https://bintray.com/olegsheliakin/maven/statebinder/_latestVersion)
 
+StateBinder is a tiny library for view state management. It eliminates redundant view rendering when the state changes.
+
+# Download
+~~~ groovy
+dependencies {
+  impelentation 'com.olegsheliakin:statebinder:1.0.0'
+}
+~~~
+
+# License
 ```
 The MIT License (MIT)
 =====================
