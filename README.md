@@ -72,7 +72,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-				stateBinder.applyCurrentState() //refreshes the current state when view is created
+        stateBinder.applyCurrentState() //refreshes the current state when view is created
       
         viewModel.state.observe(viewLifecycleOwner, Observer {
             it?.let(stateBinder::newState)
