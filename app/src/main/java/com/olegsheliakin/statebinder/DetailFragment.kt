@@ -8,7 +8,10 @@ import android.view.ViewGroup
 
 class DetailFragment : Fragment() {
 
-    private val stateBinder: StateBinder<DetailState> = StateBinder.create()
+    private val stateHolder: StateBinder<DetailState>
+        get() {
+            return StateBinder.create()
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -19,8 +22,8 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        stateBinder.applyCurrentState()
-        stateBinder.newState(DetailState("First name", null))
+        stateHolder.applyCurrentState()
+        stateHolder.newState(DetailState("First name", null))
     }
 
 }
