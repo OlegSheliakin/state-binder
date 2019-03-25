@@ -59,6 +59,7 @@ class MainFragment : Fragment() {
 stateBinder.newState(newState)
 ~~~
 
+Full code:
 ~~~ koltin
 class MainFragment : Fragment() {
 
