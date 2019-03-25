@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.fragment_detail.*
 
 class DetailFragment : Fragment() {
 
@@ -20,7 +21,18 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         stateBinder.applyCurrentState()
-        stateBinder.newState(DetailState("First name", null))
+
+        stateBinder.apply {
+            bind(DetailState::firstName) {
+                tvFirstName.text = it
+            }
+
+            bindNullable(DetailState::lastName) {
+                tvLastName.text = it
+            }
+        }
+
+        stateBinder.newState(DetailState("First name", "Last name"))
     }
 
 }
