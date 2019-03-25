@@ -2,7 +2,9 @@
 
 [ ![Download](https://api.bintray.com/packages/olegsheliakin/maven/statebinder/images/download.svg) ](https://bintray.com/olegsheliakin/maven/statebinder/_latestVersion)
 
-StateBinder is a tiny library for view state management. It eliminates redundant view rendering when the state changes.
+StateBinder is a tiny library for view state management. 
+
+If you use the MVI pattern or any other pattern using the concept of states to develop your applications, you may have encountered the problem of frequently updating widgets. It eliminates redundant view rendering when the state changes.
 
 # Download
 ~~~ groovy
