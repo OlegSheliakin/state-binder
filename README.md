@@ -19,25 +19,30 @@ dependencies {
 1. Create State class for View:
 
 ~~~ kotlin
+
 data class MainState(
     val label: String,
     val errorText: String?
 ) : State
+
 ~~~
 
 2. Create StateBinder:
 
 ~~~ kotlin
+
 class MainFragment : Fragment() {
 
     private val stateBinder: StateBinder<MainState> = StateBinder.create()
    
 }
+
 ~~~
 
 3. Bind state's properties to actions:
 
 ~~~ kotlin
+
  stateBinder.apply {
  
             bind(MainState::label) {
@@ -49,6 +54,7 @@ class MainFragment : Fragment() {
             }
             
         }
+        
 ~~~
 
   Actions will be called only when the state changes.
@@ -56,11 +62,14 @@ class MainFragment : Fragment() {
 4. Update state by calling:
 
 ~~~ kotlin
+
 stateBinder.newState(newState)
+
 ~~~
 
 Full code:
 ~~~ koltin
+
 class MainFragment : Fragment() {
 
     private val viewModel: MainViewModel by lazy {
@@ -94,7 +103,9 @@ class MainFragment : Fragment() {
         }
     }
 }
+
 ~~~
+
 # License
 ```
 The MIT License (MIT)
