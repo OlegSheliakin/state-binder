@@ -61,6 +61,7 @@ class MainFragment : Fragment() {
         return@lazy ViewModelProviders.of(this@MainFragment)[MainViewModel::class.java]
     }
 
+    //creates StateBinder
     private val stateBinder: StateBinder<MainState> = StateBinder.create()
 
     override fun onCreateView(
@@ -72,12 +73,10 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        stateBinder.applyCurrentState() //refreshes the current state when view is created
+        //refreshes the current state when view is created
+        stateBinder.applyCurrentState() 
       
-        viewModel.state.observe(viewLifecycleOwner, Observer {
-            it?.let(stateBinder::newState)
-        })
-
+        //bind properties to actions
         stateBinder.apply {
             bind(MainState::label) {
                 tvLabel.text = it
@@ -86,6 +85,12 @@ class MainFragment : Fragment() {
                 etText.error = it
             }
         }
+        
+        //observers MainState
+        viewModel.state.observe(viewLifecycleOwner, Observer {
+            it?.let(stateBinder::newState)
+        })
+
     }
 }
 ~~~
