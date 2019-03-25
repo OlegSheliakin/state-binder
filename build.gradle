@@ -1,12 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 ext {
-    bintrayRepo = 'state-binder'
-    bintrayName = 'state-binder'
+    bintrayRepo = 'maven'
+    bintrayName = 'statebinder'
 
-    artifact = 'state-binder'
+    artifact = 'statebinder'
     publishedGroupId = 'com.olegsheliakin'
-    libraryName = 'state-binder'
+    libraryName = 'statebinder'
     libraryVersion = '1.0.0'
     libraryDescription = 'State binder for MVI architecture pattern'
 

@@ -34,7 +34,7 @@ class StateBinder<T : State> private constructor() {
     }
 
     /**
-     * Consumes new state
+     * Applies new state
      */
     fun newState(state: T) {
         prev = this.current

@@ -4,7 +4,7 @@ import com.olegsheliakin.states.SimpleState
 import org.junit.Assert.*
 import org.junit.Test
 
-class StateHolderTest {
+class StateBinderTest {
 
     private val subject: StateBinder<SimpleState> = StateBinder.create()
 
