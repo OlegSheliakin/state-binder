@@ -1,1 +1,1 @@
-include ':app', ':statebinder'
+include ':app', ':state-binder'
