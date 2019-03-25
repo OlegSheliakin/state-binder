@@ -4,7 +4,8 @@
 
 StateBinder is a tiny library for view state management. 
 
-If you use the MVI pattern or any other pattern using the concept of states to develop your applications, you may have encountered the problem of frequently updating widgets. It eliminates redundant view rendering when the state changes.
+If you use the MVI pattern or any other pattern using the concept of states to develop your applications, you may have encountered the problem of frequently updating widgets. Which leads to poor performance especially you perform frequent screen state updates. 
+StateBinder eliminates redundant view rendering when the state changes.
 
 # Download
 ~~~ groovy
