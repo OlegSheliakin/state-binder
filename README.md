@@ -104,7 +104,7 @@ class MainFragment : Fragment() {
         //refreshes the current state when view is created
         stateBinder.applyCurrentState() 
       
-        //bind properties to actions
+        //binds properties to actions
         stateBinder.apply {
             bind(MainState::label) {
                 tvLabel.text = it
