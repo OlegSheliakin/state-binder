@@ -93,6 +93,7 @@ class MainFragment : Fragment() {
             }
         }
     }
+}
 ~~~
 # License
 ```
