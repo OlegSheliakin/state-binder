@@ -1,9 +1,112 @@
 # StateBinder
 
-State binder for MVI architecture pattern.
-
 [ ![Download](https://api.bintray.com/packages/olegsheliakin/maven/statebinder/images/download.svg) ](https://bintray.com/olegsheliakin/maven/statebinder/_latestVersion)
 
+StateBinder is a tiny library for view state management. 
+
+If you use the MVI pattern or any other pattern using the concept of states to develop your applications, you may have encountered the problem of frequently updating widgets, which leads to poor performance especially you perform frequent screen state updates. 
+StateBinder eliminates redundant view rendering when the state changes.
+
+# Download
+~~~ groovy
+dependencies {
+  impelentation 'com.olegsheliakin:statebinder:latest'
+}
+~~~
+
+# How to use?
+
+1. Create State class for View:
+
+~~~ kotlin
+
+data class MainState(
+    val label: String,
+    val errorText: String?
+) : State
+
+~~~
+
+2. Create StateBinder:
+
+~~~ kotlin
+
+class MainFragment : Fragment() {
+
+    private val stateBinder: StateBinder<MainState> = StateBinder.create()
+   
+}
+
+~~~
+
+3. Bind state's properties to actions:
+
+~~~ kotlin
+
+ stateBinder.apply {
+ 
+            bind(MainState::label) {
+                tvLabel.text = it
+            }
+            
+            bindNullable(MainState::errorText) {
+                etText.error = it
+            }
+            
+        }
+        
+~~~
+
+  Actions will be called only when the state changes.
+
+4. Update state by calling:
+
+~~~ kotlin
+
+stateBinder.newState(newState)
+
+~~~
+
+Full code:
+~~~ koltin
+
+class MainFragment : Fragment() {
+
+    private val viewModel: MainViewModel by lazy {
+        return@lazy ViewModelProviders.of(this@MainFragment)[MainViewModel::class.java]
+    }
+
+    private val stateBinder: StateBinder<MainState> = StateBinder.create()
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_main, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.state.observe(viewLifecycleOwner, Observer {
+            it?.let(stateBinder::newState)
+        })
+
+        stateBinder.apply {
+            applyCurrentState()
+            bind(MainState::label) {
+                tvLabel.text = it
+            }
+            bindNullable(MainState::errorText) {
+                etText.error = it
+            }
+        }
+    }
+}
+
+~~~
+
+# License
 ```
 The MIT License (MIT)
 =====================
