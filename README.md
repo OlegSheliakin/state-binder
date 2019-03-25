@@ -4,7 +4,7 @@
 
 StateBinder is a tiny library for view state management. 
 
-If you use the MVI pattern or any other pattern using the concept of states to develop your applications, you may have encountered the problem of frequently updating widgets, which leads to poor performance especially you perform frequent screen state updates. 
+If you use the MVI pattern or any other pattern using the concept of states to develop your applications, you may have encountered the problem of frequently updating widgets, which leads to poor performance especially when you perform frequent screen state updates. 
 StateBinder eliminates redundant view rendering when the state changes.
 
 # Download
@@ -89,6 +89,7 @@ class MainFragment : Fragment() {
         return@lazy ViewModelProviders.of(this@MainFragment)[MainViewModel::class.java]
     }
 
+    //creates StateBinder
     private val stateBinder: StateBinder<MainState> = StateBinder.create()
 
     override fun onCreateView(
@@ -100,12 +101,10 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-				stateBinder.applyCurrentState() //refreshes current state when view created
+        //refreshes the current state when view is created
+        stateBinder.applyCurrentState() 
       
-        viewModel.state.observe(viewLifecycleOwner, Observer {
-            it?.let(stateBinder::newState)
-        })
-
+        //bind properties to actions
         stateBinder.apply {
             bind(MainState::label) {
                 tvLabel.text = it
@@ -114,6 +113,12 @@ class MainFragment : Fragment() {
                 etText.error = it
             }
         }
+        
+        //observers MainState
+        viewModel.state.observe(viewLifecycleOwner, Observer {
+            it?.let(stateBinder::newState)
+        })
+
     }
 }
 ~~~
