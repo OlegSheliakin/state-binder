@@ -33,6 +33,27 @@ class MainFragment : Fragment() {
 }
 ~~~
 
+3. Bind state's properties to actions:
+
+~~~ kotlin
+ stateBinder.apply {
+            bind(MainState::label) {
+                tvLabel.text = it
+            }
+            bindNullable(MainState::errorText) {
+                etText.error = it
+            }
+        }
+~~~
+
+Actions will be called only when the state changes.
+
+4. Update state by calling:
+
+~~~ kotlin
+stateBinder.newState(newState)
+~~~
+
 # License
 ```
 The MIT License (MIT)
