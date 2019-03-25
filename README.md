@@ -11,6 +11,28 @@ dependencies {
 }
 ~~~
 
+# How to use?
+
+1. Create you State class for your view:
+
+~~~ kotlin
+data class MainState(
+    val label: String,
+    val errorText: String?
+) : State
+~~~
+
+2. Create StateBinder:
+
+~~~ kotlin
+class MainFragment : Fragment() {
+
+    private val stateBinder: StateBinder<MainState> = StateBinder.create()
+    
+    ...
+}
+~~~
+
 # License
 ```
 The MIT License (MIT)
