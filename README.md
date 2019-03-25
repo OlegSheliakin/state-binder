@@ -19,42 +19,29 @@ dependencies {
 1. Create State class for View:
 
 ~~~ kotlin
-
 data class MainState(
     val label: String,
     val errorText: String?
 ) : State
-
 ~~~
 
 2. Create StateBinder:
 
 ~~~ kotlin
-
-class MainFragment : Fragment() {
-
-    private val stateBinder: StateBinder<MainState> = StateBinder.create()
-   
-}
-
+private val stateBinder: StateBinder<MainState> = StateBinder.create()
 ~~~
 
 3. Bind state's properties to actions:
 
 ~~~ kotlin
-
- stateBinder.apply {
- 
+stateBinder.apply {
             bind(MainState::label) {
                 tvLabel.text = it
             }
-            
             bindNullable(MainState::errorText) {
                 etText.error = it
             }
-            
         }
-        
 ~~~
 
   Actions will be called only when the state changes.
@@ -62,14 +49,12 @@ class MainFragment : Fragment() {
 4. Update state by calling:
 
 ~~~ kotlin
-
 stateBinder.newState(newState)
-
 ~~~
 
-Full code:
-~~~ koltin
+## Full code:
 
+~~~ kotlin
 class MainFragment : Fragment() {
 
     private val viewModel: MainViewModel by lazy {
@@ -87,13 +72,13 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+				stateBinder.applyCurrentState() //refreshes current state when view created
+      
         viewModel.state.observe(viewLifecycleOwner, Observer {
             it?.let(stateBinder::newState)
         })
 
         stateBinder.apply {
-            applyCurrentState()
             bind(MainState::label) {
                 tvLabel.text = it
             }
@@ -103,7 +88,6 @@ class MainFragment : Fragment() {
         }
     }
 }
-
 ~~~
 
 # License
