@@ -16,7 +16,7 @@ dependencies {
 
 # How to use?
 
-1. Create you State class for your view:
+1. Create State class for View:
 
 ~~~ kotlin
 data class MainState(
