@@ -59,6 +59,40 @@ class MainFragment : Fragment() {
 stateBinder.newState(newState)
 ~~~
 
+~~~ koltin
+class MainFragment : Fragment() {
+
+    private val viewModel: MainViewModel by lazy {
+        return@lazy ViewModelProviders.of(this@MainFragment)[MainViewModel::class.java]
+    }
+
+    private val stateBinder: StateBinder<MainState> = StateBinder.create()
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_main, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.state.observe(viewLifecycleOwner, Observer {
+            it?.let(stateBinder::newState)
+        })
+
+        stateBinder.apply {
+            applyCurrentState()
+            bind(MainState::label) {
+                tvLabel.text = it
+            }
+            bindNullable(MainState::errorText) {
+                etText.error = it
+            }
+        }
+    }
+~~~
 # License
 ```
 The MIT License (MIT)
