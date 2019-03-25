@@ -99,4 +99,8 @@ class StateBinder<T : State> private constructor() {
         val valueSelector: ValueSelector<T, V>,
         val action: BindAction<V>
     )
+
+    enum class Strategy {
+        ON_CHANGED, ALWAYS
+    }
 }
