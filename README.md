@@ -44,7 +44,7 @@ stateBinder.apply {
         }
 ~~~
 
-  Actions will be called only when the state changes.
+  Actions will be called only when properties change.
 
 4. Create ViewModel/Presenter or any other class that is reponsible for changing and emitting State:
 
