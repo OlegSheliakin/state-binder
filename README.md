@@ -46,7 +46,7 @@ stateBinder.apply {
 
   Actions will be called only when properties change.
 
-4. Create ViewModel/Presenter or any other class that is reponsible for changing and emitting State:
+4. Create ViewModel/Presenter or any other class that is responsible for changing and emitting State:
 
    ~~~kotlin
    class MainViewModel : ViewModel() {
