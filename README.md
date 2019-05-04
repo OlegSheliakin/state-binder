@@ -114,7 +114,7 @@ class MainFragment : Fragment() {
             }
         }
         
-        //observers MainState
+        //observes MainState
         viewModel.state.observe(viewLifecycleOwner, Observer {
             it?.let(stateBinder::newState)
         })
