@@ -12,7 +12,7 @@ class StateBinderTest {
     fun testInitial() {
         var counter = 0
         subject.bind(SimpleState::nonNullableProperty) { counter++ }
-        subject.bindNullable(SimpleState::nullableProperty) { counter++ }
+        subject.bind(SimpleState::nullableProperty) { counter++ }
 
         val state = SimpleState.initial()
         subject.newState(state)
@@ -57,7 +57,7 @@ class StateBinderTest {
     @Test
     fun testActionWhenNullPropertyChangedTwoTimes() {
         var counter = 0
-        subject.bindNullable(SimpleState::nullableProperty) {
+        subject.bind(SimpleState::nullableProperty) {
             counter++
         }
 
