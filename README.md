@@ -44,9 +44,9 @@ stateBinder.apply {
         }
 ~~~
 
-  Actions will be called only when the state changes.
+  Actions will be called only when properties change.
 
-4. Create ViewModel/Presenter or any other class that is reponsible for changing and emitting State:
+4. Create ViewModel/Presenter or any other class that is responsible for changing and emitting State:
 
    ~~~kotlin
    class MainViewModel : ViewModel() {
@@ -104,7 +104,7 @@ class MainFragment : Fragment() {
         //refreshes the current state when view is created
         stateBinder.applyCurrentState() 
       
-        //bind properties to actions
+        //binds properties to actions
         stateBinder.apply {
             bind(MainState::label) {
                 tvLabel.text = it
@@ -114,7 +114,7 @@ class MainFragment : Fragment() {
             }
         }
         
-        //observers MainState
+        //observes MainState
         viewModel.state.observe(viewLifecycleOwner, Observer {
             it?.let(stateBinder::newState)
         })
